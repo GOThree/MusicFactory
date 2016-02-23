@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+before_script:
+  - npm install -g gulp
+script: gulp
+branches:
+  only:
+  - master
+notifications:
+  slack:
+    secure: IP2W3mUKCL8AeBZ/w6uWTLDF5IMm+k0oNzBuRbpIpVLrrlhyMtPrk5algvnG60sCW6Km9NuEPKSqC0YRGg+v2sRNk9NKPK++joMJWbTcEkBFUjbthKmFR1DdH8KIzYGmTTzDVY/vL1rx0u5SudKhSX5VJ7XDmxSvJDXCai2GsEQeQrW+CD6xO1w/8shAaN5hsTBm3PPdxQvzp16y8iAVnlOblmhYBejUr2IQBo5kXk/DLmPJVP6NzKsNyjfU/XDcRsmzlpUEpPPw3gDnOGyIOpZsCXkK3nvtATpzIjGtyq7hikOKPd6NdUadxvI6k4kPkSgtDC/X/2euZ5TzC2+nZqsMKZBRDAwy+vM2KE/zzABFeoGChES6xkRIzWZw8oUXU6iFcbDFXPF66yjM/W/sYCOLNX+z5Fd5/xQMyzYAL1D3eQhNk0r2ur+i0dW3n6wqJwasPx8OH/Kv/dyCGyZCGgSBL5tvCqiff/uqYeEq9Zo+hzfNHvtMvLvCdAMr/amO9NKW+X2Vm/PO/4wYPM83wqU63csGpXo70Y2kiOMEm0zi52PK8U8h9kRAgm54aHd6TxA3pENF6+pxDIlXL4FEMLvVjLakZxn+Hpg2uM734XfCydn03BzC1EZzG9I2REd/Kb0XdAO+B5prW+XN5SNuVhHuFwmA1rD/7OJWlbM1mxc=
