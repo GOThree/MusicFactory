@@ -32,8 +32,20 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-#editor specific
+# Users Environment Variables
+.lock-wscript
+.tsdrc
+.typingsrc
+
+#IDE configuration files
+.idea
 .vscode
+*.iml
 
 dist
+dev
+docs
 lib
+test
+tmp
+
