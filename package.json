@@ -27,7 +27,9 @@
   },
   "homepage": "https://github.com/GOThree/MusicFactory#readme",
   "scripts": {
-    //"test": "cd client && npm test && cd ../server && npm test",
     "install": "cd client && npm install && cd ../server && npm install"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
