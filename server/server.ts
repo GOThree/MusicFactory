@@ -3,12 +3,13 @@
 'use strict';
 
 if ('production' === process.env.NODE_ENV)
-    require('newrelic');
+  require('newrelic');
 
 var PORT = process.env.PORT || 3333;
 
 import * as express from 'express';
 import * as os from 'os';
+import * as cors from 'cors';
 import {RoutesConfig} from './config/routes.conf';
 import {DBConfig} from './config/db.conf';
 import {Routes} from './routes/index';
@@ -16,6 +17,7 @@ import {Routes} from './routes/index';
 const app = express();
 const server = app.listen(PORT);
 
+app.use(cors());
 RoutesConfig.init(app, express);
 DBConfig.init();
 Routes.init(app, express.Router());
