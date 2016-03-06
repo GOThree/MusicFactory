@@ -4,7 +4,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config/config');
 const models = join(__dirname, 'models');
- 
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const Account = require('./models/account');
+const routes = require('./routes');
+const bodyParser = require('body-parser');
 // Bootstrap models
 fs.readdirSync(models)
   .filter(file => ~file.indexOf('.js'))
@@ -13,13 +17,21 @@ fs.readdirSync(models)
 const port = process.env.PORT || 3000;
 const app = express();
 
-module.exports = app;
+app.use(passport.initialize());
 
-app.use('/', function (req, res, next) {
-  console.log('Request Type:', req.method);
-  res.send('Hello World!')
-  next();
-});
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+// parse application/json
+app.use(bodyParser.json())
+
+app.use('/', routes);
 
 connect()
   .on('error', console.log)
@@ -40,3 +52,5 @@ function connect () {
 function onDisconnected() {
     console.log('Disconnected from MongoDB')
 }
+
+module.exports = app;
