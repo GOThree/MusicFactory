@@ -6,9 +6,13 @@ const config = require('./config/config');
 const models = join(__dirname, 'models');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 const Account = require('./models/account');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
+const jwtConfig = require('./config/passport/jwt')
+
 // Bootstrap models
 fs.readdirSync(models)
   .filter(file => ~file.indexOf('.js'))
@@ -22,6 +26,26 @@ app.use(passport.initialize());
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
+
+// jwt token authentication
+jwtConfig.jwtFromRequest = ExtractJwt.fromAuthHeader();
+passport.use(new JwtStrategy(jwtConfig, function(jwt_payload, done) {
+    
+    // get user ID
+    var userId = jwt_payload.user._id;
+    
+    // find the user by ID
+    Account.findById(userId, function(err, user) {
+        if (err) {
+            return done(err, false);
+        }
+        if (user) {
+            done(null, user);
+        } else {
+            done(null, false);
+        }
+    });
+}));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
