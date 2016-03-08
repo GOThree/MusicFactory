@@ -5,14 +5,14 @@ var router = express.Router();
 var passportService = require('./services/passportService');
 
 router.post('/register', function(req, res, next){
-    Account.register(new Account({username: req.body.username}), req.body.password, function(err){
+    Account.register(new Account({username: req.body.username}), req.body.password, function(err, user){
         if(err){
             console.log('error while user register', err);
         } else {
             // issue token
-            var token = passportService.createToken(req.user);
+            var token = passportService.createToken(user);
             // return token
-            res.send(token);
+            res.send({jwt: token});
         }
     });
 });
@@ -26,7 +26,7 @@ router.get('/',
 router.get('/jwt_test_route', passport.authenticate('jwt', { session: false}),
     function(req, res) {
         // should not s
-        res.send(req.user.id);
+        res.send({userId: req.user.id});
     }
 );
 
@@ -34,7 +34,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
     // issue token
     var token = passportService.createToken(req.user);
     // return token
-    res.send(token);
+    res.send({jwt: token});
 });
 
 router.get('/logout', function(req, res) {
