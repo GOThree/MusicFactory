@@ -1,8 +1,16 @@
 {
-  "name": "musicfactory-server",
-  "version": "0.0.1",
-  "description": "Web app that searches social media for posted songs and streams the music. All that combined with a nice dashboard and statistics.",
-  "main": "index.js",
+  "name": "music-factory-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bluebird": "^3.3.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "lodash": "^4.6.1",
+    "mongoose": "^4.4.6"
+  },
+  "devDependencies": {},
   "scripts": {
     "start": "./node_modules/.bin/nodemon server.js",
     "debug": "./node_modules/.bin/nodemon --debug server.js",
@@ -30,12 +38,5 @@
   "bugs": {
     "url": "https://github.com/GOThree/MusicFactory/issues"
   },
-  "homepage": "https://github.com/GOThree/MusicFactory#readme",
-  "devDependencies": {
-    "mongoose": "^4.4.5",
-    "nodemon": "^1.9.1"
-  },
-  "dependencies": {
-    "express": "^4.13.4"
-  }
+  "homepage": "https://github.com/GOThree/MusicFactory#readme"
 }
