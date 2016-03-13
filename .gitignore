@@ -48,5 +48,9 @@ docs
 lib
 test
 tmp
-
 typings
+#Ignore compiled files
+*.js
+*.js.map
+#Except gulpfile.js (for now)
+!server/gulpfile.js
