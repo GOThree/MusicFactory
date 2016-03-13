@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/main.d.ts" />
+/// <reference path="../../../typings/main.d.ts" />
 
 import * as mongoose from 'mongoose';
 
@@ -7,4 +7,4 @@ const _todoSchema = {
     createdAt: {type: Date, default: Date.now}
 }
 
-export default mongoose.Schema(_todoSchema);
+export default new mongoose.Schema(_todoSchema);
