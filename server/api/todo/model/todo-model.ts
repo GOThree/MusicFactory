@@ -7,4 +7,4 @@ const _todoSchema = {
     createdAt: {type: Date, default: Date.now}
 }
 
-export default mongoose.Schema(_todoSchema);
+export default new mongoose.Schema(_todoSchema);
