@@ -1,9 +1,6 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="typings/main.d.ts" />
 
 'use strict';
-
-if ('production' === process.env.NODE_ENV)
-  require('newrelic');
 
 var PORT = process.env.PORT || 3333;
 
