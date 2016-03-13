@@ -18,5 +18,5 @@
     "**/*.ts",
     "typings/main.d.ts"
   ],
-  "compileOnSave": false
+  "compileOnSave": true
 }
