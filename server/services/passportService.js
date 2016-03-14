@@ -4,7 +4,7 @@ var jwtConfig = require('../config/passport/jwt');
 function createToken(user) {
     // PoC Only because it sends the hash and salt!
     return jwt.sign({
-        user: user.toJSON()
+        uid: user.id
     }, 
     jwtConfig.secretOrKey,
     {
@@ -17,4 +17,4 @@ function createToken(user) {
 
 module.exports = {
     createToken: createToken
-}
+};

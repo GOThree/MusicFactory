@@ -32,7 +32,10 @@ jwtConfig.jwtFromRequest = ExtractJwt.fromAuthHeader();
 passport.use(new JwtStrategy(jwtConfig, function(jwt_payload, done) {
     
     // get user ID
-    var userId = jwt_payload.user._id;
+    if(!jwt_payload.uid) {
+        return done('Missing uid in payload', false);
+    }
+    var userId = jwt_payload.uid;
     
     // find the user by ID
     Account.findById(userId, function(err, user) {
