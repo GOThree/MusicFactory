@@ -8,11 +8,9 @@ router.post('/register', function(req, res, next){
     Account.register(new Account({username: req.body.username}), req.body.password, function(err, user){
         if(err){
             console.log('error while user register', err);
+            res.status(409).send('user already registered');
         } else {
-            // issue token
-            var token = passportService.createToken(user);
-            // return token
-            res.send({jwt: token});
+            res.send({});
         }
     });
 });
