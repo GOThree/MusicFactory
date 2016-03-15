@@ -14,9 +14,5 @@
     "node_modules",
     "typings"
   ],
-  "filesGlob": [
-    "**/*.ts",
-    "typings/main.d.ts"
-  ],
   "compileOnSave": true
 }

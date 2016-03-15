@@ -1,5 +1,6 @@
-import * as gulp from 'gulp';
+/// <reference path="typings/main.d.ts" />
 
-gulp.task('default', function() {
-  // place code for your default task here
-});
+import * as gulp from 'gulp';
+import {runSequence, task} from './tools/utils';
+
+gulp.task('clean', done => task('clean')(done));
