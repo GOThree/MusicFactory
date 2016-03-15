@@ -1,12 +1,15 @@
 {
   "name": "music-factory-server",
-  "dependencies": {},
+  "dependencies": {
+    "gulp": "github:typed-typings/npm-gulp#504da08753acdfe9dd2c415ab8fe36151e9645c1"
+  },
   "devDependencies": {},
   "ambientDependencies": {
     "bluebird": "github:DefinitelyTyped/DefinitelyTyped/bluebird/bluebird.d.ts#dd328830dddffbe19e9addd7cf8532cbd3600816",
     "body-parser": "github:DefinitelyTyped/DefinitelyTyped/body-parser/body-parser.d.ts#9a2c50ea846ee6ae36feaea0accc77ae7b08a748",
     "cors": "github:DefinitelyTyped/DefinitelyTyped/cors/cors.d.ts#ee872c633411d2524cafc68d339f016acbfa1fd6",
     "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#dd638012d63e069f2c99d06ef4dcc9616a943ee4",
+    "inversify": "registry:dt/inversify#2.0.0-alpha.3+20160311095032",
     "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#3379a636096ee2f8a825308881877f91e75ed0cc",
     "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash-3.10.d.ts#3d572e1ee3e6492983ef01f8b7adf6150d345b11",
     "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#cb5206a8ac1c9a3ddfd126f5ecea6729b2361452",

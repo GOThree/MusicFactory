@@ -8,10 +8,15 @@
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "inversify": "^2.0.0-alpha.3",
     "lodash": "^4.6.1",
     "mongoose": "^4.4.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "ts-node": "^0.6.1",
+    "typescript-register": "^1.1.0"
+  },
   "scripts": {
     "start": "./node_modules/.bin/nodemon server.js",
     "debug": "./node_modules/.bin/nodemon --debug server.js",
