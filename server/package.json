@@ -16,6 +16,9 @@
   "devDependencies": {
    "gulp": "^3.9.1",
    "gulp-util": "^3.0.7",
+   "gulp-sourcemaps": "~1.5.2",
+   "gulp-plumber": "~1.0.1",
+   "gulp-typescript": "~2.10.0",
    "ts-node": "^0.6.1",
    "typescript": "^1.8.7",
    "gulp-load-plugins": "^0.10.0",

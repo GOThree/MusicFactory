@@ -2,9 +2,11 @@
 import * as gulp from 'gulp';
 import {runSequence, task} from './tools/utils';
 
-//debugger;
-gulp.task('clean', done => task('clean')(done));
+gulp.task('clean.dev', done => task('clean')(done));
+gulp.task('build.js.dev', done => task('build.js.dev')(done));
 
-//gulp.task('build', function() {
-//  console.log('Gulp is running!')
-//});
+// Build dev.
+gulp.task('build.dev', done =>
+  runSequence('clean.dev',
+              'build.js.dev',
+              done));

@@ -1,4 +1,4 @@
-/// <reference path="typings/main.d.ts" />
+/// <reference path="../typings/main.d.ts" />
 
 'use strict';
 
@@ -8,7 +8,7 @@ import * as express from 'express';
 import * as os from 'os';
 import * as cors from 'cors';
 import {RoutesConfig} from './config/routes.conf';
-import {DBConfig} from './config/db.conf';
+import {DBConfig} from './config/db';
 import {Routes} from './routes/index';
 
 const app = express();
