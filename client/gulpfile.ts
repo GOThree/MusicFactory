@@ -10,6 +10,7 @@ gulp.task('check.versions', () => task('check.versions'));
 gulp.task('build.docs', () => task('build.docs'));
 gulp.task('serve.docs', () => task('serve.docs'));
 gulp.task('serve.coverage', task('serve.coverage'));
+gulp.task('build.assets.dev', task('build.assets.dev'));
 
 // --------------
 // Build dev.
