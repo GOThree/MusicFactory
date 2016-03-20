@@ -1,11 +1,16 @@
 #Music Factory
 
-###Prerequisites
+###Run the server
 
-- [Typings](https://github.com/typings/typings)  - npm install -g typings
-- Fix mongoose.d.ts - add 
+- cd server and npm install
+- Fix typings/main/ambient/mongoose/index.d.ts - add 
 
     > statics : any;
 
-  to "Schema" controller - line #160
-- Copy ./constants folder to ./dist after compiling
+  to "Schema" class - line #160
+- npm run serve.dev
+
+###Run the client
+- cd client and nom install
+- npm run serve.dev
+
