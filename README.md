@@ -11,6 +11,6 @@
 - npm run serve.dev
 
 ###Run the client
-- cd client and nom install
+- cd client and npm install
 - npm run serve.dev
 
