@@ -1,9 +1,9 @@
-/// <reference path="../../../../typings/main.d.ts" />
-
 import * as mongoose from 'mongoose';
 import * as Promise from 'bluebird';
 import todoSchema from '../model/todo-model';
 import * as _ from 'lodash';
+
+let Todo:any = mongoose.model('Todo', todoSchema);
 
 todoSchema.statics.getAll = ():Promise<any> => {
   return new Promise<any>((resolve:Function, reject:Function) => {
@@ -16,7 +16,7 @@ todoSchema.statics.getAll = ():Promise<any> => {
         : resolve(todos);
     });
   });
-}
+};
 
 todoSchema.statics.createTodo = (todo:Object):Promise<any> => {
   return new Promise<any>((resolve:Function, reject:Function) => {
@@ -31,7 +31,7 @@ todoSchema.statics.createTodo = (todo:Object):Promise<any> => {
         : resolve(saved);
     });
   });
-}
+};
 
 todoSchema.statics.deleteTodo = (id:string):Promise<any> => {
   return new Promise<any>((resolve:Function, reject:Function) => {
@@ -46,8 +46,6 @@ todoSchema.statics.deleteTodo = (id:string):Promise<any> => {
         : resolve();
     });
   });
-}
-
-let Todo:any = mongoose.model('Todo', todoSchema);
+};
 
 export default Todo;

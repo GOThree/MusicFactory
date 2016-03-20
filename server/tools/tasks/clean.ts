@@ -8,6 +8,7 @@ export = function clean(gulp, plugins, option) {
 
 
   return function(done) {
+
     switch(option) {
       //case 'all'  : cleanAll(done);  break;
       case 'dev'  : cleanDev(done);  break;
@@ -22,4 +23,4 @@ function cleanDev(done) {
     util.log('Deleted', chalk.yellow(paths && paths.join(', ') || '-'));
     done();
   });
-}
+};

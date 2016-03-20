@@ -9,7 +9,6 @@ export const APP_SRC              = 'src';
 export const APP_DEST             = `${DIST_DIR}/${ENV}`;
 export const DEV_DEST             = `${DIST_DIR}/dev`;
 
-
 function appVersion(): number|string {
   var pkg = JSON.parse(readFileSync('package.json').toString());
   return pkg.version;

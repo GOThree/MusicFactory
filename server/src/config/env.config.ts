@@ -8,4 +8,4 @@ export const ENV_VARS = {
 	production : {
 		db : 'mongodb://localhost/musicfactory'
 	}
-}
+};

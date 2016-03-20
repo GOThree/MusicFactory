@@ -1,7 +1,5 @@
 /// <reference path="../typings/main.d.ts" />
 
-'use strict';
-
 var PORT = process.env.PORT || 3333;
 
 import * as express from 'express';
@@ -12,7 +10,6 @@ import {DBConfig} from './config/db';
 import {Routes} from './routes/index';
 
 const app = express();
-const server = app.listen(PORT);
 
 app.use(cors());
 RoutesConfig.init(app, express);
