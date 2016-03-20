@@ -10,6 +10,9 @@ import {DBConfig} from './config/db';
 import {Routes} from './routes/index';
 
 const app = express();
+/* tslint:disable */
+const server = app.listen(PORT);
+/* tslint:enable */
 
 app.use(cors());
 RoutesConfig.init(app, express);
