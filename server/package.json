@@ -10,17 +10,32 @@
     "express": "^4.13.4",
     "inversify": "^2.0.0-alpha.3",
     "lodash": "^4.6.1",
-    "mongoose": "^4.4.6"
+    "mongoose": "^4.4.6",
+    "systemjs": "^0.19.24"
   },
   "devDependencies": {
+    "chalk": "^1.1.1",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-plumber": "~1.0.1",
+    "gulp-sourcemaps": "~1.5.2",
+    "gulp-tslint": "^4.3.3",
+    "gulp-tslint-stylish": "^1.1.1",
+    "gulp-typescript": "~2.10.0",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.1.0",
     "ts-node": "^0.6.1",
-    "typescript-register": "^1.1.0"
+    "tslint": "^3.6.0",
+    "typescript": "^1.8.7"
   },
   "scripts": {
     "start": "./node_modules/.bin/nodemon server.js",
     "debug": "./node_modules/.bin/nodemon --debug server.js",
-    "test": "./node_modules/.bin/ava --serial test/test-*.js"
+    "test": "./node_modules/.bin/ava --serial test/test-*.js",
+    "postinstall": "typings install && npm prune",
+    "build.dev": "gulp build.dev",
+    "serve.dev": "gulp build.dev && node ./dist/dev/server.js"
   },
   "repository": {
     "type": "git",

@@ -1,7 +1,3 @@
-/// <reference path="../typings/main.d.ts" />
-
-"use strict";
-
 import * as bodyParser from 'body-parser';
 
 export class RoutesConfig {
