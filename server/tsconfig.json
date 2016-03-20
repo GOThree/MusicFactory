@@ -10,13 +10,14 @@
     "experimentalDecorators": true,
     "outDir": "dist",
     "sourceMap": true
-  },"exclude": [
-    "node_modules",
-    "typings"
-  ],
-  "filesGlob": [
-    "**/*.ts",
-    "typings/main.d.ts"
-  ],
-  "compileOnSave": true
+  },
+  "exclude": [
+      "node_modules",
+      "typings"
+    ],
+    "filesGlob": [
+      "**/*.ts",
+      "./typings/main.d.ts"
+    ],
+  "compileOnSave": false
 }

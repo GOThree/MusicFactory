@@ -1,6 +1,6 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="../../typings/main.d.ts" />
 
-import {TodoRoutes} from '../api/todo/routes/todo-routes';
+import {TodoRoutes} from '../components/todo/routes/todo-routes';
 
 export class Routes {
   static init(app:any, router:any){
