@@ -12,3 +12,8 @@ gulp.task('build.dev', done =>
   			  'tslint',
               'build.js.dev',
               done));
+              
+gulp.task('serve.dev', done =>
+  runSequence('build.dev',
+              'server.start',
+              done));
