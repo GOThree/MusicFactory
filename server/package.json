@@ -9,8 +9,13 @@
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "inversify": "^2.0.0-alpha.3",
+    "jsonwebtoken": "^5.7.0",
     "lodash": "^4.6.1",
     "mongoose": "^4.4.6",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
     "systemjs": "^0.19.24"
   },
   "devDependencies": {
