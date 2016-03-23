@@ -14,6 +14,10 @@ export class AuthenticationController {
     static login(req: any, res:any):void {
             // issue token
             var token = AuthenticationServices.createToken(req.user);
+
+            // once the user is logged in the token should be 
+            // marked as valid for future authentication
+            // Account.setValidatedToken(req.user.id, true);
             res.send({jwt: token});
     }
 }

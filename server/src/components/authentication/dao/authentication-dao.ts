@@ -16,9 +16,19 @@ accountSchema.static('create', (email:string, password:string):Promise<any> => {
         });
 });
 
+accountSchema.static('setValidatedToken', (id:string, validatedToken: boolean) => {
+    return new Promise<any>((resolve:Function, reject:Function) => {
+        Account.findByIdAndUpdate(id, { $set: { validatedToken: validatedToken }},
+            (err, user) => {
+                err ? reject (err)
+                : resolve(user);
+            });
+    });
+});
+
 accountSchema.plugin(passportLocalMongoose, {
-    digestAlgorithm: 'sha512',
-    usernameField: 'email'
+    usernameField: 'email',
+    digestAlgorithm: 'sha512'
 });
 
 let Account:any = mongoose.model('Account', accountSchema);
