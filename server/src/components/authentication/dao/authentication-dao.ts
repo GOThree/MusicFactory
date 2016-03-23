@@ -5,10 +5,10 @@ import accountSchema from '../model/account-model';
 let passportLocalMongoose = require('passport-local-mongoose');
 
 // TODO: add validations
-accountSchema.static('create', (username:string, password:string):Promise<any> => {
+accountSchema.static('create', (email:string, password:string):Promise<any> => {
     return new Promise<any>((resolve:Function, reject:Function) => {
         Account.register(
-             new Account({username:username}), password,
+             new Account({email:email}), password,
                 (err, user) => {
                     err ? reject(err)
                     : resolve(user);
@@ -17,7 +17,8 @@ accountSchema.static('create', (username:string, password:string):Promise<any> =
 });
 
 accountSchema.plugin(passportLocalMongoose, {
-    digestAlgorithm: 'sha512'
+    digestAlgorithm: 'sha512',
+    usernameField: 'email'
 });
 
 let Account:any = mongoose.model('Account', accountSchema);
