@@ -9,7 +9,7 @@ function createToken(user) {
     jwtConfig.secretOrKey,
     {
         algorithm: jwtConfig.algorithm,
-        expiresInMinutes: jwtConfig.expiresInMinutes,
+        expiresIn: jwtConfig.expiresIn,
         issuer: jwtConfig.issuer,
         audience: jwtConfig.audience
     });

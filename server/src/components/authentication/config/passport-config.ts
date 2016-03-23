@@ -1,4 +1,5 @@
-// const EXPIRES_IN_MINUTES = 60 * 15;
+const EXPIRES_IN_SECONDS = 60 * 60 * 15;
+
 // PoC ONLY!!!
 var SECRET = process.env.tokenSecret || '4ukI0uIVnB3iI1bnmk646fVXSE18Vk4doZgz6fTbNg7jO41EAtl20J5F7Trtwe7OM';
 
@@ -11,7 +12,8 @@ var JWT_STRATEGY_CONFIG = {
   issuer : ISSUER,
   audience: AUDIENCE,
   passReqToCallback: false,
-  algorithm: ALGORITHM
+  algorithm: ALGORITHM,
+  expiresIn: EXPIRES_IN_SECONDS
 };
 
 module.exports = JWT_STRATEGY_CONFIG;
