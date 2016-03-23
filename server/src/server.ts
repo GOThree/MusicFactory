@@ -7,7 +7,8 @@ import * as os from 'os';
 import * as cors from 'cors';
 import {RoutesConfig} from './config/routes.conf';
 import {DBConfig} from './config/db';
-import {Routes} from './routes/index';
+import {Routes} from './routes/public/index';
+import {AuthenticatedRoutes} from './routes/authenticated/index';
 import * as passport from 'passport';
 import {Strategy} from 'passport-local';
 import Account from './components/authentication/dao/authentication-dao';
@@ -59,6 +60,7 @@ passport.use(new JwtStrategy(jwtConfig, function(jwt_payload, done) {
 DBConfig.init();
 RoutesConfig.init(app, express);
 Routes.init(app, express.Router());
+AuthenticatedRoutes.init(app, express.Router());
 
 console.log(`up and running @: ${os.hostname()} on port: ${PORT}`);
 console.log(`enviroment: ${process.env.NODE_ENV}`);
