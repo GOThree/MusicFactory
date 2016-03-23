@@ -3,7 +3,7 @@ import {AuthenticationServices} from '../services/authentication-services';
 
 export class AuthenticationController {
     static create(req:any, res:any):void {
-        var email = req.body.email;
+        var email = req.body.username;
         var password = req.body.password;
 
         Account.create(email, password)
