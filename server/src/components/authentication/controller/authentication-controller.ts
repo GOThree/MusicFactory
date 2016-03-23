@@ -34,7 +34,8 @@ export class AuthenticationController {
         // TODO: finish the logic
         // 1) set passwordResetRequested to true
         // 2) create reset token user 'crypto'
-        // 3) expiration date 
+        // 3) expiration date
+        // 4) on success the `validToken` property should be set to `false`  
         Account.createResetPasswordToken(username).then((data) => {
             if (data) {
                 console.log(data);

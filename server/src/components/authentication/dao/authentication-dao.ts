@@ -16,9 +16,9 @@ accountSchema.static('create', (email:string, password:string):Promise<any> => {
         });
 });
 
-accountSchema.static('setValidatedToken', (id:string, validatedToken: boolean) => {
+accountSchema.static('setValidToken', (id:string, validToken: boolean) => {
     return new Promise<any>((resolve:Function, reject:Function) => {
-        Account.findByIdAndUpdate(id, { $set: { validatedToken: validatedToken }},
+        Account.findByIdAndUpdate(id, { $set: { validToken: validToken }},
             (err, user) => {
                 err ? reject (err)
                 : resolve(user);
@@ -26,9 +26,22 @@ accountSchema.static('setValidatedToken', (id:string, validatedToken: boolean) =
     });
 });
 
+accountSchema.static('createResetPasswordToken', (username:string) => {
+    return new Promise<any>((resolve:Function, reject:Function) => {
+        // the username field is set to `email`
+        // so we should search for username by `email`
+        // the mongoose option is to save the username .toLowerCase()
+        Account.findOne({email: username.toLowerCase()}, (err, user) => {
+            err ? reject ( err )
+            : resolve(user);
+        });
+    });
+});
+
 accountSchema.plugin(passportLocalMongoose, {
     usernameField: 'email',
-    digestAlgorithm: 'sha512'
+    digestAlgorithm: 'sha512',
+    usernameLowerCase: true
 });
 
 let Account:any = mongoose.model('Account', accountSchema);
