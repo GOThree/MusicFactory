@@ -9,5 +9,8 @@ export class AuthenticationRoutes {
         router
             .route('/login')
             .post(passport.authenticate('local'), AuthenticationController.login);
+        router
+            .route('/reset')
+            .post(AuthenticationController.requestPasswordReset);
     }
 }
