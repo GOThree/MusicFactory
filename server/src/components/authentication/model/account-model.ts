@@ -12,7 +12,8 @@ const _account = {
             return emailRegex.test(v); // Assuming email has a text attribute
         },
         message: 'Email is not in the correct format'
-    }}
+    }},
+    validToken: {type: Boolean}
 };
 
 export default new mongoose.Schema(_account);
