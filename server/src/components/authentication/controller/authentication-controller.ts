@@ -1,5 +1,5 @@
 import Account from '../dao/authentication-dao';
-var passportService = require('../services/authentication-services');
+import {AuthenticationServices} from '../services/authentication-services';
 
 export class AuthenticationController {
     static create(req:any, res:any):void {
@@ -13,8 +13,7 @@ export class AuthenticationController {
 
     static login(req: any, res:any):void {
             // issue token
-            var token = passportService.createToken(req.user);
+            var token = AuthenticationServices.createToken(req.user);
             res.send({jwt: token});
-            // res.send({user: req.user});
     }
 }

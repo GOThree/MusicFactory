@@ -13,7 +13,7 @@ import * as passport from 'passport';
 import {Strategy} from 'passport-local';
 import Account from './components/authentication/dao/authentication-dao';
 import * as bodyParser from 'body-parser';
-const jwtConfig = require('./components/authentication/config/passport-config');
+import {JwtStrategyConfig} from './components/authentication/config/jwt-strategy-config';
 
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -36,8 +36,8 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // jwt token authentication
-jwtConfig.jwtFromRequest = ExtractJwt.fromAuthHeader();
-passport.use(new JwtStrategy(jwtConfig, function(jwt_payload, done) {
+JwtStrategyConfig.jwtFromRequest = ExtractJwt.fromAuthHeader();
+passport.use(new JwtStrategy(JwtStrategyConfig, function(jwt_payload, done) {
     // get user ID
     if(!jwt_payload.uid) {
         return done('Missing uid in payload', false);
