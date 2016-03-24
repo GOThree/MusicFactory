@@ -18,7 +18,8 @@ accountSchema.static('create', (email:string, password:string):Promise<any> => {
 
 accountSchema.plugin(passportLocalMongoose, {
     digestAlgorithm: 'sha512',
-    usernameField: 'email'
+    usernameField: 'email',
+    usernameQueryFields : ['email']
 });
 
 let Account:any = mongoose.model('Account', accountSchema);
