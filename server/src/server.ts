@@ -10,14 +10,12 @@ import {DBConfig} from './config/db';
 import {Routes} from './routes/public/index';
 import {AuthenticatedRoutes} from './routes/authenticated/index';
 import * as passport from 'passport';
-import {Strategy} from 'passport-local';
 import Account from './components/authentication/dao/authentication-dao';
 import * as bodyParser from 'body-parser';
 import {JwtStrategyConfig} from './components/authentication/config/jwt-strategy-config';
 
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const LocalStrategy = Strategy;
 
 const app = express();
 /* tslint:disable */
