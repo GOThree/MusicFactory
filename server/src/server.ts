@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 
 // Authentication
 app.use(passport.initialize());
-passport.use(new LocalStrategy(Account.authenticate()));
+passport.use(Account.createStrategy());
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
