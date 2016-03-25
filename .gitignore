@@ -49,3 +49,5 @@ lib
 test
 tmp
 typings
+
+server/src/config/keys.ts
