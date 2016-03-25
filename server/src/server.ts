@@ -61,7 +61,7 @@ var winstonStream = {
   write: function(message){
     logger.info(message);
   }
-}
+};
 
 app.use(cors());
 app.use(morgan('dev', { stream: winstonStream }));
