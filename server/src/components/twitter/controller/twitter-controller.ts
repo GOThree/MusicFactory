@@ -1,5 +1,5 @@
 import TwitterDAO from '../dao/twitter-dao';
-import {twitterConf} from '../../../config/twitter.config';
+import {twitterConf} from '../../../config/keys';
 // import * as Twitter from 'twitter';
 let Twitter = require('twitter');
 
