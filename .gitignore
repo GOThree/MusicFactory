@@ -51,3 +51,4 @@ tmp
 typings
 
 server/src/config/keys.ts
+server/src/config/twitter.config.ts

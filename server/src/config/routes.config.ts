@@ -2,6 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import {AuthenticationRoutes} from '../components/authentication/routes/authentication-routes';
 import {TodoRoutes} from '../components/todo/routes/todo-routes';
+import {TwitterRoutes} from '../components/twitter/routes/twitter-routes';
 import * as passport from 'passport';
 import * as express from 'express';
 
@@ -20,7 +21,8 @@ export class RoutesConfig {
         application.use(helmet());
 
         AuthenticationRoutes.init(router);
-        TodoRoutes.init(authenticatedRouter);
+        TodoRoutes.init(router);
+        TwitterRoutes.init(router);
 
         application.use('/', router);
         application.use('/api', authenticatedRouter);
