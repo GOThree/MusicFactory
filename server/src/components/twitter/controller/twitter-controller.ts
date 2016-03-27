@@ -19,20 +19,23 @@ export class TwitterController {
       access_token_secret: twitterConf.access_token_secret
     });
 
-    console.log('Saving tweets with hashtag ' + req.body.hashtag);
+    if (req.body.hashtag) {
+      console.log('Saving tweets for ' + req.body.hashtag);
+      client.stream('statuses/filter', {track: req.body.hashtag}, function(stream) {
+        stream.on('data', function(tweet) {
+          console.log(tweet.text);
+          TwitterDAO
+          .saveTweet(tweet);
+        });
 
-    client.stream('statuses/filter', {track: req.body.hashtag}, function(stream) {
-      stream.on('data', function(tweet) {
-        console.log(tweet.text);
-        TwitterDAO
-        .saveTweet(tweet);
+        stream.on('error', function(error) {
+          throw error;
+        });
       });
 
-      stream.on('error', function(error) {
-        throw error;
-      });
-    });
-
-    res.sendStatus(200);
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(400);
+    }
   }
 }
