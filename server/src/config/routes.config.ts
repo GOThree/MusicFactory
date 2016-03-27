@@ -1,3 +1,5 @@
+/// <reference path="../../typings/main.d.ts" />
+
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import {AuthenticationRoutes} from '../components/authentication/routes/authentication-routes';

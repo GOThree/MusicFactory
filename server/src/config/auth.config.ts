@@ -1,3 +1,5 @@
+/// <reference path="../../typings/main.d.ts" />
+
 import * as passport from 'passport';
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;

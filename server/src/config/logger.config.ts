@@ -1,3 +1,5 @@
+/// <reference path="../../typings/main.d.ts" />
+
 import {join} from 'path';
 import * as winston from 'winston';
 const FILE_PATH = join(__dirname, '../all-logs.log');
