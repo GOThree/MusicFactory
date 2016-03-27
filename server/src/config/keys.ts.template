@@ -1,0 +1,5 @@
+export const mail_gun = {
+  api_key: '',
+  default_domain:'',
+  api_base_url:''
+};
