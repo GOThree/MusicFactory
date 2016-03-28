@@ -13,7 +13,13 @@ const _account = {
         },
         message: 'Email is not in the correct format'
     }},
-    validToken: {type: Boolean}
+    passwordResetOn: {type: Date},
+    // define the date of last password reset request 
+    passwordResetRequestedOn: {type: Date},
+    // the reset token needed for updating the password
+    passwordResetToken: {type: String},
+    // the date until the token is valid
+    passwordResetTokenValidUntil: {type: Date}
 };
 
 export default new mongoose.Schema(_account);

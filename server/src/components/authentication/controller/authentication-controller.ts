@@ -1,5 +1,6 @@
 import Account from '../dao/authentication-dao';
 import {AuthenticationServices} from '../services/authentication-services';
+import * as crypto from 'crypto';
 
 export class AuthenticationController {
     static create(req:any, res:any):void {
@@ -14,15 +15,6 @@ export class AuthenticationController {
     static login(req: any, res:any):void {
             // issue token
             var token = AuthenticationServices.createToken(req.user);
-
-            // once the user is logged in the token should be 
-            // marked as valid for future authentication
-            // the token will be marked as invalid once the 
-            // user request password reset
-            if(!req.user.validToken) {
-                Account.setValidToken(req.user.id, true);
-            }
-
             res.send({jwt: token});
     }
 
@@ -31,19 +23,34 @@ export class AuthenticationController {
     static requestPasswordReset(req:any, res:any):void {
         var username = req.body.username;
 
-        // TODO: finish the logic
-        // 1) set passwordResetRequested to true
-        // 2) create reset token user 'crypto'
-        // 3) expiration date
-        // 4) on success the `validToken` property should be set to `false`  
-        Account.createResetPasswordToken(username).then((data) => {
+        // the duration in hours for how long 
+        // the reset token will be valid
+        var resetTokenValidUntil = 4;
+        
+        // create password reset token
+        Account.getUserByEmail(username).then((data) => {
             if (data) {
-                console.log(data);
+                // create password reset token
+                crypto.randomBytes(48, function(ex, buf) {
+                    var passwordResetToken = buf.toString('hex');
+
+                    // set the reset token valid until date
+                    var validUntil = new Date();
+                    validUntil.setHours(validUntil.getHours() + resetTokenValidUntil);
+
+                    Account.setPasswordReset(data.id, passwordResetToken, validUntil).then(() => {
+                        // TODO: send e-mail with the password reset url
+                        console.log('password reset token: ' + passwordResetToken + 
+                        '\nuser id: ' + data.id);
+                    }).catch(() => {
+                        console.log('password reset error');
+                    });
+                });
             }
         });
 
         // this will be executed before 
-        // the .createResetPasswordToken() finishes
+        // the .getUserByEmail() finishes
         res.send({});
     }
 }
