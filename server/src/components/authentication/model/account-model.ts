@@ -2,6 +2,7 @@
 import * as mongoose from 'mongoose';
 
 // TODO: validations
+// TODO: add password validator
 // logging created date, modified date, etc.
 const _account = {
     fullName: {type: String, required: false, trim: true},
@@ -17,9 +18,9 @@ const _account = {
     // define the date of last password reset request 
     passwordResetRequestedOn: {type: Date},
     // the reset token needed for updating the password
-    passwordResetToken: {type: String},
+    passwordResetToken: {type: String, select: false},
     // the date until the token is valid
-    passwordResetTokenValidUntil: {type: Date}
+    passwordResetTokenExpirationDate: {type: Date}
 };
 
 export default new mongoose.Schema(_account);

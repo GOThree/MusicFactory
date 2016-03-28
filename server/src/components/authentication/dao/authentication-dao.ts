@@ -16,12 +16,12 @@ accountSchema.static('create', (email:string, password:string):Promise<any> => {
         });
 });
 
-accountSchema.static('setPasswordReset', (id:string, passwordResetToken: string, passwordResetTokenValidUntil: Date) => {
+accountSchema.static('setPasswordReset', (id:string, passwordResetToken: string, passwordResetTokenExpirationDate: Date) => {
     return new Promise<any>((resolve:Function, reject:Function) => {
         Account.findByIdAndUpdate(id, { $set:
                 {
                     passwordResetToken: passwordResetToken,
-                    passwordResetTokenValidUntil: passwordResetTokenValidUntil,
+                    passwordResetTokenExpirationDate: passwordResetTokenExpirationDate,
                     passwordResetRequestedOn: new Date()
                 }
             },
@@ -29,6 +29,20 @@ accountSchema.static('setPasswordReset', (id:string, passwordResetToken: string,
                 err ? reject (err)
                 : resolve(user);
             });
+    });
+});
+
+accountSchema.static('getResetPasswordUser', (id:string, passwordResetToken:string, passwordResetTokenExpirationDate: Date) => {
+    return new Promise<any>((resolve:Function, reject:Function) => {
+        Account.findOne({
+            _id: id,
+            passwordResetToken: passwordResetToken,
+            passwordResetTokenExpirationDate : { $gte: passwordResetTokenExpirationDate}
+        })
+        .exec((err, user) => {
+            err ? reject(err) :
+                resolve(user);
+        });
     });
 });
 

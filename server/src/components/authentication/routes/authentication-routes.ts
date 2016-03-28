@@ -12,5 +12,8 @@ export class AuthenticationRoutes {
         router
             .route('/reset')
             .post(AuthenticationController.requestPasswordReset);
+        router
+            .route('/changepassword')
+            .post(AuthenticationController.changePassword);
     }
 }
