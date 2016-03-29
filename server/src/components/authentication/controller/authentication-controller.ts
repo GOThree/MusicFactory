@@ -64,7 +64,7 @@ export class AuthenticationController {
     // always send 200 OK because this can be abused to
     // find the usernames in the database
     static requestPasswordReset(req:any, res:any):void {
-        var username = req.body.username;
+        var username = req.body.email;
 
         // the duration in hours for how long 
         // the reset token will be valid
