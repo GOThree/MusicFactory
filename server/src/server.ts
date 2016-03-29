@@ -13,8 +13,8 @@ import logger from './config/logger.config';
 
 const app = express();
 
-RoutesConfig.init(app);
 AuthConfig.init(app);
+RoutesConfig.init(app);
 DBConfig.init();
 
 app.use(cors());
