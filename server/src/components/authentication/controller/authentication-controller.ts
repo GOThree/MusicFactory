@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 
 export class AuthenticationController {
     static create(req:any, res:any):void {
-        var email = req.body.username;
+        var email = req.body.email;
         var password = req.body.password;
 
         Account.create(email, password)
