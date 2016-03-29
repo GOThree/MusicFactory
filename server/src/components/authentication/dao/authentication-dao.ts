@@ -59,8 +59,9 @@ accountSchema.static('getUserByEmail', (username:string) => {
 });
 
 accountSchema.plugin(passportLocalMongoose, {
-    usernameField: 'email',
     digestAlgorithm: 'sha512',
+    usernameField: 'email',
+    usernameQueryFields : ['email'],
     usernameLowerCase: true
 });
 
