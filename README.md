@@ -9,3 +9,6 @@
 - cd client and npm install
 - npm run serve.dev
 
+###Run tests
+- npm install
+- npm test
