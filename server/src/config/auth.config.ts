@@ -25,8 +25,22 @@ export class AuthConfig {
                 if (err) {
                     return done(err, false);
                 }
+
                 if (user) {
-                    done(null, user);
+                     if (user.passwordResetOn) {
+                        var tokenIssuedAt = new Date(jwt_payload.iat * 1000);
+                        var passwordResetAt = user.passwordResetOn;
+
+                        // reject the token if it has been issued
+                        // before the password reset
+                        if (passwordResetAt > tokenIssuedAt) {
+                            done(null, false);
+                        } else {
+                            done(null, user);
+                        }
+                    } else {
+                        done(null, user);
+                    }
                 } else {
                     done(null, false);
                 }

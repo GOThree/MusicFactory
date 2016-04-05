@@ -9,6 +9,8 @@ export class RoutesConfig {
     static init(application:any):void {
         let _root = process.cwd();
         let router = express.Router();
+        let authenticatedRouter = express.Router();
+        authenticatedRouter.use(passport.authenticate('jwt', { session: false}));
 
         application.use(express.static(_root));
         application.use(bodyParser.json());
@@ -18,9 +20,9 @@ export class RoutesConfig {
         application.use(helmet());
 
         AuthenticationRoutes.init(router);
-        TodoRoutes.init(router);
+        TodoRoutes.init(authenticatedRouter);
 
-        router.use(passport.authenticate('jwt', { session: false}));
         application.use('/', router);
+        application.use('/api', authenticatedRouter);
     }
 }

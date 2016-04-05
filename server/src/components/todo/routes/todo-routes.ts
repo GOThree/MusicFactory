@@ -3,12 +3,12 @@ import {TodoController} from '../controller/todo-controller';
 export class TodoRoutes {
     static init(router) {
       router
-        .route('/api/todos')
+        .route('/todos')
         .get(TodoController.getAll)
         .post(TodoController.createTodo);
 
       router
-        .route('/api/todos/:id')
+        .route('/todos/:id')
         .delete(TodoController.deleteTodo);
     }
 }
