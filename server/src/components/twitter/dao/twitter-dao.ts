@@ -18,12 +18,11 @@ twitterSchema.static('getAll', ():Promise<any> => {
   });
 });
 
-twitterSchema.static('saveTweet', (tweet:Object):Promise<any> => {
+twitterSchema.static('saveTweet', (tweet:any):Promise<any> => {
   return new Promise<any>((resolve:Function, reject:Function) => {
     if (!_.isObject(tweet)) {
       return reject(new TypeError('Tweet is not a valid object.'));
     }
-
     var _tweet = new Tweet(tweet);
 
     _tweet.save((err, saved) => {

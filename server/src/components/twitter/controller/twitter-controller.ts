@@ -1,6 +1,5 @@
 import TwitterDAO from '../dao/twitter-dao';
 import {twitterConf} from '../../../config/keys';
-// import * as Twitter from 'twitter';
 let Twitter = require('twitter');
 
 export class TwitterController {
@@ -19,13 +18,18 @@ export class TwitterController {
       access_token_secret: twitterConf.access_token_secret
     });
 
-    if (req.body.hashtag) {
-      console.log('Saving tweets for ' + req.body.hashtag);
-      client.stream('statuses/filter', {track: req.body.hashtag}, function(stream) {
+    let requestedHashtag = req.body.hashtag;
+
+    if (requestedHashtag) {
+      console.log('Saving tweets for ' + requestedHashtag);
+
+      client.stream('statuses/filter', {track: requestedHashtag}, function(stream) {
         stream.on('data', function(tweet) {
-          console.log(tweet.text);
-          TwitterDAO
-          .saveTweet(tweet);
+          //Discard retweets
+          if (!tweet.retweeted) {
+            TwitterDAO.saveTweet(tweet);
+            console.log('Tweet for ' + requestedHashtag + ' saved');
+          }
         });
 
         stream.on('error', function(error) {
