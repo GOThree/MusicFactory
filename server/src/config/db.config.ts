@@ -1,3 +1,5 @@
+/// <reference path="../../typings/main.d.ts" />
+
 import * as mongoose from 'mongoose';
 import {ENV_VARS} from './env.config';
 

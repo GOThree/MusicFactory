@@ -1,3 +1,5 @@
+/// <reference path="../../../../typings/main.d.ts" />
+
 import * as Promise from 'bluebird';
 import * as mongoose from 'mongoose';
 import accountSchema from '../model/account-model';

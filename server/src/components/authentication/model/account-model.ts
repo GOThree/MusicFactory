@@ -1,4 +1,6 @@
 // var mongoose = require('mongoose');
+/// <reference path="../../../../typings/main.d.ts" />
+
 import * as mongoose from 'mongoose';
 
 // TODO: validations

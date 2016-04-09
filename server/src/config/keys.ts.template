@@ -3,3 +3,9 @@ export const mail_gun = {
   default_domain:'',
   api_base_url:''
 };
+export const twitterConf = {
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: ''
+}
