@@ -11,6 +11,7 @@
     "cors": "github:DefinitelyTyped/DefinitelyTyped/cors/cors.d.ts#ee872c633411d2524cafc68d339f016acbfa1fd6",
     "del": "github:DefinitelyTyped/DefinitelyTyped/del/del.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
     "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#dd638012d63e069f2c99d06ef4dcc9616a943ee4",
+    "express-validator": "github:DefinitelyTyped/DefinitelyTyped/express-validator/express-validator.d.ts#38d211956dec596b53c9bf8fe001f5fd121497c4",
     "glob": "github:DefinitelyTyped/DefinitelyTyped/glob/glob.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
     "gulp-load-plugins": "github:DefinitelyTyped/DefinitelyTyped/gulp-load-plugins/gulp-load-plugins.d.ts#e081148d88b857d66509e3b46edbd08b3f75f96a",
     "gulp-shell": "github:DefinitelyTyped/DefinitelyTyped/gulp-shell/gulp-shell.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
@@ -31,7 +32,7 @@
     "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#0fa4e9e61385646ea6a4cba2aef357353d2ce77f",
     "systemjs": "github:DefinitelyTyped/DefinitelyTyped/systemjs/systemjs.d.ts#5c3e47967affa3c4128a3875d1664ba206ae1b0f",
     "through2": "github:DefinitelyTyped/DefinitelyTyped/through2/through2.d.ts#5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff",
-    "twitter": "registry:dt/twitter#0.0.0+20160316155526",
+    "twitter": "github:DefinitelyTyped/DefinitelyTyped/twitter/twitter.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
     "vinyl": "github:DefinitelyTyped/DefinitelyTyped/vinyl/vinyl.d.ts#5a8fc5ee71701431e4fdbb80c506e3c13f85a9ff",
     "winston": "github:DefinitelyTyped/DefinitelyTyped/winston/winston.d.ts#cc3e106d891c8a288e0ecb876d26bf0c4d57b7dc"
   }

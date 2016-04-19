@@ -3,6 +3,20 @@ import {AuthenticationServices} from '../services/authentication-services';
 import * as crypto from 'crypto';
 
 export class AuthenticationController {
+
+    static craeatValidation(req: any, res: any, next: any) {
+        req.checkBody('email')
+            .notEmpty().withMessage('Email is required')
+            .isEmail().withMessage('Email is not in the correct format');
+
+        req.checkBody('password')
+            .notEmpty().withMessage('Email is required')
+            .isEmail().withMessage('Email is not in the correct format');
+
+        // return errors or continue
+        AuthenticationController.checkForErrors(req, res, next);
+    }
+
     static create(req:any, res:any):void {
         var email = req.body.email;
         var password = req.body.password;
@@ -17,6 +31,7 @@ export class AuthenticationController {
             var token = AuthenticationServices.createToken(req.user);
             res.send({jwt: token});
     }
+
     static changePassword(req: any, res: any) {
         var id = req.body.id;
         var resetToken = req.body.resetToken;
@@ -61,6 +76,15 @@ export class AuthenticationController {
             });
     }
 
+    static requestPasswordResetValidation(req: any, res: any, next: any):void {
+        req.checkBody('email')
+            .notEmpty().withMessage('Email is required')
+            .isEmail().withMessage('Email is not in the correct format');
+
+        // return errors or continue
+        AuthenticationController.checkForErrors(req, res, next);
+    }
+
     // always send 200 OK because this can be abused to
     // find the usernames in the database
     static requestPasswordReset(req:any, res:any):void {
@@ -95,5 +119,15 @@ export class AuthenticationController {
         // this will be executed before 
         // the .getUserByEmail() finishes
         res.send({});
+    }
+
+    private static checkForErrors(req: any, res: any, next: any):void {
+        var errors = req.validationErrors();
+        if (errors) {
+            res.send(JSON.stringify(errors), 400);
+            return;
+        }
+
+        next();
     }
 }
