@@ -4,14 +4,13 @@ import * as crypto from 'crypto';
 
 export class AuthenticationController {
 
-    static craeatValidation(req: any, res: any, next: any) {
+    static createValidation(req: any, res: any, next: any) {
         req.checkBody('email')
             .notEmpty().withMessage('Email is required')
             .isEmail().withMessage('Email is not in the correct format');
 
         req.checkBody('password')
-            .notEmpty().withMessage('Email is required')
-            .isEmail().withMessage('Email is not in the correct format');
+            .notEmpty().withMessage('Email is required');
 
         // return errors or continue
         AuthenticationController.checkForErrors(req, res, next);
