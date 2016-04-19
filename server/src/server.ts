@@ -33,3 +33,5 @@ app.listen(PORT, function(){
     logger.debug(`enviroment: ${process.env.NODE_ENV || 'development'}`);
 });
 
+// TODO: this should be handled properly
+export default app;
