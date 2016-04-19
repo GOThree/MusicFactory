@@ -52,5 +52,38 @@ describe('Component Authentication Registering User', () => {
                         done();
                     });
         });
-    });    
+    });
+    
+    it('should fail registering users because email is not provided', (done)=> {
+        var request = {password: 'test12345'};
+        chai.request(server)
+            .post('/register')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            })
+    });
+    
+    it('should fail registering users because password is not provided', (done)=> {
+        var request = {email: 'test', password: 'test12345'};
+        chai.request(server)
+            .post('/register')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            })
+    });
+    
+    it('should fail registering users because email and password are not provided', (done)=> {
+        var request = {};
+        chai.request(server)
+            .post('/register')
+            .send(request)
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            })
+    });
 });
