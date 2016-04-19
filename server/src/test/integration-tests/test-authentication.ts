@@ -39,7 +39,7 @@ describe('Component Authentication Registering User', () => {
     });
        
     it('should register and login user successfully', (done) => {
-        var request = {email: 'vlado@gothree.com', password: 'test12345'}
+        var request = {email: 'admin@gothree.com', password: 'test12345'}
         chai.request(server)
             .post('/register')
             .send(request)
@@ -66,7 +66,7 @@ describe('Component Authentication Registering User', () => {
     });
     
     it('should fail registering users because password is not provided', (done)=> {
-        var request = {email: 'test', password: 'test12345'};
+        var request = {email: 'admin@gothree.com'};
         chai.request(server)
             .post('/register')
             .send(request)
