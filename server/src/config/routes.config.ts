@@ -7,6 +7,7 @@ import {TodoRoutes} from '../components/todo/routes/todo-routes';
 import {TwitterRoutes} from '../components/twitter/routes/twitter-routes';
 import * as passport from 'passport';
 import * as express from 'express';
+let expressValidator = require('express-validator');
 
 export class RoutesConfig {
     static init(application:any):void {
@@ -20,6 +21,7 @@ export class RoutesConfig {
         application.use(bodyParser.urlencoded({
             extended: true
         }));
+        application.use(expressValidator());
         application.use(helmet());
 
         AuthenticationRoutes.init(router);

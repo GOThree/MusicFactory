@@ -11,7 +11,7 @@ export class AuthenticationRoutes {
             .post(passport.authenticate('local'), AuthenticationController.login);
         router
             .route('/reset')
-            .post(AuthenticationController.requestPasswordReset);
+            .post(AuthenticationController.requestPasswordResetValidation, AuthenticationController.requestPasswordReset);
         router
             .route('/changepassword')
             .post(AuthenticationController.changePassword);
