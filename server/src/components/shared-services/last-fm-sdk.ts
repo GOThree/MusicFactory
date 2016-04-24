@@ -1,4 +1,5 @@
 import {lastFm} from '../../config/keys';
+const http = require('http');
 
 export class LastFmSdk {
 	rootUrl : string;
@@ -10,35 +11,48 @@ export class LastFmSdk {
 
     constructor(options : LastFmInitOptions) {
         var options = options || new LastFmInitOptions();
-        this.rootUrl = 'http://ws.audioscrobbler.com/';
+        this.rootUrl = 'http://ws.audioscrobbler.com';
         this.userAgent = options.userAgent || 'appname/v1.0 MusicFactory';
         this.format = options.format || 'json';
         this.apiKey = lastFm.api_key;
-        this.version = options.version || '/2.0';
-        this.errors = {
-           2 : 'Invalid service - This service does not exist',
-           3 : 'Invalid Method - No method with that name in this package',
-           4 : 'Authentication Failed - You do not have permissions to access the service',
-           5 : 'Invalid format - This service doesn\'t exist in that format',
-           6 : 'Invalid parameters - Your request is missing a required parameter',
-           7 : 'Invalid resource specified',
-           8 : 'Operation failed - Something else went wrong',
-           9 : 'Invalid session key - Please re-authenticate',
-           10 : 'Invalid API key - You must be granted a valid key by last.fm',
-           11 : 'Service Offline - This service is temporarily offline. Try again later.',
-           13 : 'Invalid method signature supplied',
-           16 : 'There was a temporary error processing your request. Please try again',
-           26 : 'Suspended API key - Access for your account has been suspended, please contact Last.fm',
-           29 : 'Rate limit exceeded - Your IP has made too many requests in a short period'
-        };
+        this.version = options.version || '2.0';
     }
 
-    buildQueryString(params: QueryStringParams) : string{
-        var queryString = '/' + this.version + '&api_key=' + this.apiKey + '&format=' + this.format;
-        for (var item in params.items){
-            queryString += '&' + item[0] + '=' + item[1];
+    buildQueryString(params: QueryStringParams) : string {
+        var queryString = '/' + this.version + '/?' + '&api_key=' + this.apiKey + '&format=' + this.format;
+        console.log(params);
+        for (var item in params.items) {
+            queryString += '&' + item + '=' + item;
         }
         return queryString;
+    }
+
+    trackInfo(track: string, artist: string, callback: Function) : void {
+        let autocorrect = new KeyValuePair('autocorrect', '1');
+        let artistName = new KeyValuePair('artist ', artist);
+        let trackName = new KeyValuePair('track ', track);
+        let method = new KeyValuePair('method ', 'track.getInfo');
+        let url = this.buildQueryString(new QueryStringParams([method, artistName, trackName ,autocorrect]));
+        this.makeRequest(url, callback);
+    }
+
+    makeRequest(url: string, callback: Function): any {
+        let httpVerb = 'GET';
+        let options = {
+            host: this.rootUrl,
+            port: 80,
+            path: url,
+            method: httpVerb,
+            headers: this.requestHeaders()
+        };
+
+        http.request(options, callback).end();
+    }
+
+    requestHeaders():  any {
+        return {
+            'User-Agent': this.userAgent
+        };
     }
 };
 
@@ -49,11 +63,19 @@ class LastFmInitOptions {
 }
 
 class QueryStringParams {
-    items : IKeyValuePair<string, string>[];
+    items : KeyValuePair<string, string>[];
+
+        constructor(items: KeyValuePair<string, string>[]) {
+            this.items = items;
+    }
 }
 
-interface IKeyValuePair<K,V> {
-    0: K;
-    1: V;
+class KeyValuePair<K,V> {
+    key: K;
+    value: V;
+    constructor(key: K, value: V) {
+        this.key = key;
+        this.value = value;
+    }
 };
 
