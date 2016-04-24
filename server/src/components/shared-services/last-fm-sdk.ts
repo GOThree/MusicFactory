@@ -18,11 +18,15 @@ export class LastFmSdk {
         this.version = options.version || '2.0';
     }
 
-    buildQueryString(params: QueryStringParams) : string {
-        var queryString = '/' + this.version + '/?' + '&api_key=' + this.apiKey + '&format=' + this.format;
-        console.log(params);
+    buildQueryString(options: string) : string {
+        var queryString = '/' + this.version + '/?' + '&api_key=' + this.apiKey + '&format=' + this.format + options;
+        return queryString;
+    }
+
+    queryOptionsBuilder(params: QueryStringParams) : string {
+        var queryString = '';
         for (var item in params.items) {
-            queryString += '&' + item + '=' + item;
+            queryString += '&' + params.items[item].key + '=' + params.items[item].value;
         }
         return queryString;
     }
@@ -32,7 +36,8 @@ export class LastFmSdk {
         let artistName = new KeyValuePair('artist ', artist);
         let trackName = new KeyValuePair('track ', track);
         let method = new KeyValuePair('method ', 'track.getInfo');
-        let url = this.buildQueryString(new QueryStringParams([method, artistName, trackName ,autocorrect]));
+        let options = this.queryOptionsBuilder(new QueryStringParams([method, artistName, trackName ,autocorrect]));
+        let url = this.buildQueryString(options);
         this.makeRequest(url, callback);
     }
 
@@ -56,13 +61,13 @@ export class LastFmSdk {
     }
 };
 
-class LastFmInitOptions {
+export class LastFmInitOptions {
     userAgent: string;
     format: string;
     version: string;
 }
 
-class QueryStringParams {
+export class QueryStringParams {
     items : KeyValuePair<string, string>[];
 
         constructor(items: KeyValuePair<string, string>[]) {
@@ -70,7 +75,7 @@ class QueryStringParams {
     }
 }
 
-class KeyValuePair<K,V> {
+export class KeyValuePair<K,V> {
     key: K;
     value: V;
     constructor(key: K, value: V) {
