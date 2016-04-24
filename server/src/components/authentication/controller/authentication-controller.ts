@@ -1,7 +1,6 @@
 import Account from '../dao/authentication-dao';
 import {AuthenticationServices} from '../services/authentication-services';
 import * as crypto from 'crypto';
-
 export class AuthenticationController {
 
     static createValidation(req: any, res: any, next: any) {
