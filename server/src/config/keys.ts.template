@@ -8,4 +8,7 @@ export const twitterConf = {
   consumer_secret: '',
   access_token_key: '',
   access_token_secret: ''
-}
+};
+export const youtubeKeys = {
+api_key: ''
+};

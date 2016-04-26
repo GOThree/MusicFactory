@@ -5,6 +5,7 @@ import * as helmet from 'helmet';
 import {AuthenticationRoutes} from '../components/authentication/routes/authentication-routes';
 import {TodoRoutes} from '../components/todo/routes/todo-routes';
 import {TwitterRoutes} from '../components/twitter/routes/twitter-routes';
+import {YoutubeRoutes} from '../components/youtube/routes/youtube-routes';
 import * as passport from 'passport';
 import * as express from 'express';
 let expressValidator = require('express-validator');
@@ -27,6 +28,7 @@ export class RoutesConfig {
         AuthenticationRoutes.init(router);
         TodoRoutes.init(router);
         TwitterRoutes.init(router);
+        YoutubeRoutes.init(router);
 
         application.use('/', router);
         application.use('/api', authenticatedRouter);
